@@ -1,0 +1,36 @@
+###
+GET https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos
+
+
+
+###
+POST https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos
+content-type: application/json
+
+{
+           
+    "nombre": "Pizza pepperoni",
+      "precio": 255,
+      "imagen": "https://i.imgur.com/UrqoWzf.png",
+      "descripcion":"Pizza pepperonis, familiar, 8 porciones , para compartir, con salsa de tomate, queso muzarella y y finas rodajas de pepperoni",
+      "cantidad": 1,
+      "categoria": "Pizzas"
+}
+
+
+
+###
+POST   https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/usuarios
+content-type: application/json
+
+{
+     "usuario":"popo",
+     "clave":"123456",
+      "rol":"cliente"
+     
+      
+}
+
+
+
+
