@@ -124,7 +124,7 @@ export default {
   },
 
   methods: {
-    eliminarDeCarrito(id, cant) {
+    eliminarDeCarrito(id, cant) {     
       this.$emit("eliminarCarrito", id, cant);
     },
     precioTotal() {

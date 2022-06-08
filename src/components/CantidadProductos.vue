@@ -20,16 +20,14 @@ export default {
     };
   },
   methods: {
-    sumar() {
-     
+    sumar() {     
       this.contador++;
-      this.$emit("cantidadProductos", this.contador);
-      
+      this.$store.dispatch('cantidadSeleccionada',this.contador)      
     },
-    restar() {
-     
+    restar() {     
       if (this.contador > 1) {
         this.contador--;
+        this.$store.dispatch('cantidadSeleccionada',this.contador) 
       }
       this.$emit("cantidadProductos", this.contador);
      

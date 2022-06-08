@@ -2,6 +2,7 @@
     <div>
          <div class="container mt-4">
         <div class="row">
+         
         <div class="col-12">
 
           <agregar-carrito
@@ -11,9 +12,7 @@
           />
          
         <lista-productos
-            :propListaProductos="productos"
-            @agregarAlCarrito="AgregoCarrito"
-        />
+         @listaCarrito="AgregoCarrito"/>
          
         </div>
       </div>
@@ -24,11 +23,11 @@
 <script>
 import ListaProductos from '@/components/ListaProductos.vue';
 import AgregarCarrito from "@/components/AgregarCarrito.vue"; 
-import axios from "axios";
+//import axios from "axios";
     export default {
         name: "PaginaInicio",
-        mounted(){
-           this.GetProductos()
+        mounted(){         
+           this.$store.dispatch("GetProductos")
         },
         components: {
            ListaProductos,
@@ -42,33 +41,24 @@ import axios from "axios";
           }
         },
    methods: {
-     async GetProductos(){
-                 await axios.get("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos")
-                 .then(respuesta => { 
-                     this.productos = respuesta.data                                      
-                })
-                 .catch(error =>{console.log(error.message)})
-                 .finally(() => {console.log('Finalizo la peticion')})
-            },
-
-    AgregoCarrito(producto, cantidad) {
-     
+    
+    AgregoCarrito(producto) {
       const product = this.productosCarrito.find(
         (element) => element.id == producto.id
       );
       if (product == undefined) {
-        producto.cantidad = cantidad;
-        producto.total = producto.precio * cantidad
+        producto.cantidad = this.$store.getters.cantidasSeleccionada;
+        producto.total = producto.precio * this.$store.getters.cantidasSeleccionada
         this.productosCarrito.push(producto);
       } else {
-        producto.cantidad = cantidad;
-          producto.total = producto.precio * cantidad
+        producto.cantidad = this.$store.cantidasSeleccionada;
+          producto.total = producto.precio * this.$store.cantidasSeleccionada
       
       }
      
     },
     eliminarProductosCarrito(id, cant) {
-      
+
       if (cant > 1) {
         const product = this.productosCarrito.find(
           (element) => element.id == id

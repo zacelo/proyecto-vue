@@ -2,7 +2,7 @@
   <div class="row">
     <div
       class="col-3 mb-3"
-      v-for="(item, index) in propListaProductos"
+      v-for="(item, index) in $store.getters.listaProductos"
       :key="index"
     >
       <div class="card">
@@ -18,7 +18,7 @@
             {{ item.descripcion }}
           </p>         
              <h6 class="card-title">Precio: ${{ item.precio }}</h6>
-            <CantidadProductos @cantidadProductos="cantidadDeProductos" />    
+            <CantidadProductos />    
 
           <a class="btn btn-primary mt-2" @click="agregarCarrito(item)"
             >Añadir a carrito</a
@@ -42,27 +42,20 @@ export default {
   },
   methods: {
     agregarCarrito(producto) {
-      this.$emit("agregarAlCarrito", producto, this.contador);
-       this.contador=1
+     
+      this.$emit("listaCarrito", producto,);
+      this.contador=1
       this.$swal.fire({
         icon: "success",
         title: "Agregado al Carrito",
         showConfirmButton: false,
         timer: 1000,
       });
-    },
-    cantidadDeProductos(cant) {      
-      this.contador = cant;
-    },
+    },   
   },
   components: {
     CantidadProductos,
-  },
-  props: {
-    propListaProductos: {
-      type: Array,
-    },
-  },
+  }, 
 };
 </script>
 
