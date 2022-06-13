@@ -2,7 +2,7 @@
   <div class="row">
     <div
       class="col-3 mb-3"
-      v-for="(item, index) in $store.getters.listaProductos"
+      v-for="(item, index) in listaProductos"
       :key="index"
     >
       <div class="card">
@@ -18,7 +18,10 @@
             {{ item.descripcion }}
           </p>         
              <h6 class="card-title">Precio: ${{ item.precio }}</h6>
-            <CantidadProductos />    
+            <CantidadProductos
+            :propCantidad="cantidad"
+            @cantidadProductos="cantidadSeleccionada"
+            />    
 
           <a class="btn btn-primary mt-2" @click="agregarCarrito(item)"
             >Añadir a carrito</a
@@ -31,27 +34,40 @@
 
 <script>
 import CantidadProductos from "./CantidadProductos.vue";
-
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: "ListaProductos",
-
+  
   data() {
     return {
-      contador: 1,
+      cantidad: 1,
     };
   },
+   mounted(){         
+           this.$store.dispatch("inicioCargaProductos/GetProductos")
+        },
   methods: {
-    agregarCarrito(producto) {
-     
-      this.$emit("listaCarrito", producto,);
-      this.contador=1
+    agregarCarrito(producto) {      
+      producto.cantidad = this.cantidad      
+      this.$store.dispatch("carrito/listaCarrito", producto);
+      this.cantidad=1   
+        
       this.$swal.fire({
         icon: "success",
         title: "Agregado al Carrito",
         showConfirmButton: false,
         timer: 1000,
       });
-    },   
+    },
+    cantidadSeleccionada(cant){      
+     this.cantidad = cant     
+    },
+    ...mapActions('inicioCargaProductos', ['GetProductos']),
+    ...mapActions('carrito', ['listaCarrito'])    
+  },
+  computed: {
+     ...mapGetters('inicioCargaProductos',['listaProductos']),
+    
   },
   components: {
     CantidadProductos,

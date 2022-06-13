@@ -9,6 +9,7 @@
       class="bi bi-arrow-right-circle-fill fs-3 btn text-warning"
       @click="sumar()"
     ></i>
+  
   </div>
 </template>
 
@@ -16,23 +17,27 @@
 export default {
   data() {
     return {
-      contador: 1,
+      contador: this.propCantidad,
     };
   },
   methods: {
     sumar() {     
-      this.contador++;
-      this.$store.dispatch('cantidadSeleccionada',this.contador)      
+       this.contador++;
+       this.$emit("cantidadProductos", this.contador);                        
     },
     restar() {     
       if (this.contador > 1) {
-        this.contador--;
-        this.$store.dispatch('cantidadSeleccionada',this.contador) 
-      }
-      this.$emit("cantidadProductos", this.contador);
-     
+        this.contador--;      
+      }     
+      this.$emit("cantidadProductos", this.contador);     
     },
+   
   },
+  props: {
+    propCantidad:{
+      type:Number
+    }
+  }
 };
 </script>
 
