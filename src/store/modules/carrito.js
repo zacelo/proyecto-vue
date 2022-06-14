@@ -9,7 +9,9 @@ export default {
   },
 
   getters: {
-
+     resetearProductoscarrito(state){
+           state.productosCarrito = []
+     }
   },
 
 

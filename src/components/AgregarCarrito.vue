@@ -64,7 +64,7 @@
 
 <script>
 //import axios from "axios";
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions,mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -76,7 +76,7 @@ export default {
 
   computed: {
     ...mapState('carrito', ['productosCarrito']),
-
+   ...mapGetters('carrito', ['resetearProductoscarrito']),
     precioTotal() {
       let totalCarrito = this.productosCarrito.reduce((total, producto) => total + producto.total, 0) - this.total
       return totalCarrito
@@ -103,6 +103,7 @@ export default {
     ...mapActions('carrito', ['eliminarProductosCarro', 'cargarCarritoDesdeLocal']),
 
      PostCompra(compra) {
+      this.resetearProductoscarrito
       console.log(compra)   
     },
   },
