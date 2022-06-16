@@ -17,7 +17,7 @@
                 |
                 <router-link to="/nosotros" class="btn btn-warning text-white fw-bolder fs-5">Nosotros</router-link>
               
-                
+                |
 
                 <router-link v-if="datos.boton" :to="{ name: datos.ruta }"
                   class="btn btn-warning text-white fw-bolder fs-5">{{ datos.nombreBoton }}</router-link>
@@ -49,12 +49,12 @@ import AgregarCarrito from "@/components/AgregarCarrito.vue";
 export default {
   name: "App",
 
-  mounted() {
+  created() {
         this.validarLocal();   
   },
   data() {
     return {
-      datos: JSON.parse(localStorage.getItem("datos")),
+      datos: ''
     };
   },
   components: {
@@ -74,7 +74,10 @@ export default {
           imagenUsuario: "./assets/user1.png",
           boton: false,
         };
-        localStorage.setItem("datos", JSON.stringify(datos));
+        localStorage.setItem("datos", JSON.stringify(datos))
+        this.datos=JSON.parse(localStorage.getItem("datos"))
+      }else{
+        this.datos=JSON.parse(localStorage.getItem("datos"))
       }
     },
     validarUsuario(usuario) {
