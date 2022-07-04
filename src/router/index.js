@@ -15,21 +15,24 @@ const routes = [
       name: 'nosotros',     
       component: () => import('../views/PaginaNosotros.vue')
     },
-    {
-      path: '/mi-cuenta',
-      name: 'micuenta',         
-      component: () => import('../views/MiCuenta.vue')
-    },
+    
     {
       path: '/galeria',
       name: 'galeria',     
       component: () => import('../views/GaleriaImagenes.vue')
     },
+   
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoguinUsuario.vue')
+      path: '/panel-usuario',
+      name: 'panel-usuario',     
+      component: () => import('../views/PanelUsuario.vue')
     },
+    {
+      path: '/menu',
+      name: 'menu',     
+      component: () => import('../views/NuestroMenu.vue')
+    },
+    
     {
       path: '/admin/Panel',
       name: 'panel',

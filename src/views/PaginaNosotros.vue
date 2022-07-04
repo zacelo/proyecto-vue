@@ -1,20 +1,40 @@
 <template>
   <div>
     <div class="container">
-      <div class="row">
-       
-        <div class="col-12 text-center mt-5">
-          <h1>Nosotros</h1>          
-        </div>
-      </div>
+        <banner-nosotros/>       
+      <descripcion-nosotros/>
+      <testimonios-web/>
     </div>
   </div>
 </template>
 
-
 <script>
-
-export default{
- 
-}
+import { mapState } from 'vuex'
+import BannerNosotros from "@/components/BannerNosotros.vue"
+import DescripcionNosotros from '@/components/DescNosotros.vue'
+import TestimoniosWeb from '@/components/TestimoniosWeb.vue'
+    export default {
+  mounted() {
+    this.validarEntradaUsuario()    
+  },
+   computed: {
+    ...mapState('usuarios', ['usuario'])
+  },
+   methods: {
+    validarEntradaUsuario() {      
+      if (this.usuario.rol == 'admin') {
+        this.$router.push({ name: 'panel' })
+      }
+    },
+    
+   
+  },
+        components: {
+          BannerNosotros,
+          DescripcionNosotros,
+          TestimoniosWeb
+        }
+    }
 </script>
+
+

@@ -20,17 +20,18 @@ content-type: application/json
 
 
 ###
+
 POST   https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/usuarios
 content-type: application/json
 
 {
      "usuario":"popo",
      "clave":"123456",
-      "rol":"cliente"
-     
+      "rol":"cliente"     
       
 }
 
-
+###
+GET https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/compras/
 
 

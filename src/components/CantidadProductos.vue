@@ -1,41 +1,45 @@
 <template>
-  <div class="d-flex">
-    <i
-      class="bi bi-arrow-left-circle-fill fs-3 btn text-warning"
-      @click="restar()"
-    ></i>
-    <h5 class="align-self-center border px-3 mt-2">{{ contador }}</h5>
-    <i
-      class="bi bi-arrow-right-circle-fill fs-3 btn text-warning"
-      @click="sumar()"
-    ></i>
+
+ <div class="d-flex mt-3 ">
+    <a class="btn mb-2 px-1"> <i class="fas fa-minus fs-6 text-warning" @click="restar()"></i></a>
+
+    <h5 class="align-self-center border px-3">{{ contador }}</h5>
+
+    <a class="btn mb-2 px-1"><i class="fas fa-plus fs-6 text-warning" @click="sumar()"></i></a>
+
   
+
   </div>
+
+ 
 </template>
 
 <script>
 export default {
+ 
   data() {
     return {
-      contador: this.propCantidad,
+      contador: 1
     };
   },
   methods: {
-    sumar() {     
-       this.contador++;
-       this.$emit("cantidadProductos", this.contador);                        
+    sumar() {
+      this.contador++;
+      this.$emit("cantidadProductos", this.contador);
     },
-    restar() {     
+    restar() {
       if (this.contador > 1) {
-        this.contador--;      
-      }     
-      this.$emit("cantidadProductos", this.contador);     
+        this.contador--;
+      }
+      this.$emit("cantidadProductos", this.contador);
     },
-   
+    reset(){      
+      this.contador = 1
+    }
   },
   props: {
-    propCantidad:{
-      type:Number
+    propCantidad: {
+      type: Number
     }
   }
 };

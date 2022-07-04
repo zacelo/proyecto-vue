@@ -22,8 +22,8 @@ export default {
      },
  
      actions: {
-        async GetProductos(context) {           
-            let cargaProductos = await Apis.getProductos();                       
+        async GetProductos(context, filtro) {           
+            let cargaProductos = await Apis.getProductos(filtro);                       
             context.commit('cargarProductos', cargaProductos)
        },
        

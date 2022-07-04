@@ -1,85 +1,89 @@
-import TablaProductos from '@/';
+
 <template>
-    <div>
+    <div class="container mt-4">
+        <h1 class="mb-4">Panel de administrador</h1>
        
-       <TablaProducto
-       :propsTituloTabla='tituloTabla'
-       :propsProductos="productos"
-       @ProductoParaAgregar="PostProducto"
-       @ProductoParaEliminar="DelProducto"
-       @ProductoParaModificar="PutProducto"
-      
-       />
-   
+        <TablaProducto :propsTituloTabla='tituloTabla' :propsProductos="productos" @ProductoParaAgregar="PostProducto"
+            @ProductoParaEliminar="DelProducto" @ProductoParaModificar="PutProducto" />
+        
+
+        <tabla-ventas/>
     </div>
 </template>
 
 <script>
 import TablaProducto from '@/components/admin/TablaProducto.vue'
+import TablaVentas from '@/components/admin/TablaVentas.vue'
 import axios from "axios";
+import { mapState } from 'vuex'
 
-    export default {
-        name: 'PanelAdministrador',
-        data(){
-            return{
-              tituloTabla:['Imagen','Nombre','Precio','Descripción','Categoría','',''],
-              productos:[],
-             
-            }
+export default {
+    name: 'PanelAdministrador',
+    data() {
+        return {
+            tituloTabla: ['Imagen', 'Nombre', 'Precio', 'Descripción', 'Categoría', '', ''],
+            productos: [],
+
+        }
+    },
+
+    mounted() {
+        this.GetProductos(),
+            this.validarEntradaUsuario()
+
+    },
+    components: {
+        TablaProducto,
+        TablaVentas
+    },
+    computed: {
+        ...mapState('usuarios', ['usuario'])
+    },
+    methods: {
+        validarEntradaUsuario() {
+            if (this.usuario.rol == undefined || this.usuario.rol != 'admin') {
+                this.$router.push({ name: 'inicio' })                
+            } 
+
         },
-           
-        mounted() {
-            
-            if (localStorage.getItem('rol') == 'admin') {                
-              this.GetProductos()                     
-            }else{
-               this.$router.push({name:'login'})    
-            }               
+        async GetProductos() {
+            await axios.get("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos")
+                .then(respuesta => {
+                    this.productos = respuesta.data
+                })
+                .catch(error => { console.log(error.message) })
+                .finally(() => { console.log('Finalizo la peticion') })
         },
-        components: {
-            TablaProducto
+        async PostProducto(product) {
+            await axios.post("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos", product)
+                .then(respuesta => {
+                    console.log('Se agregó este registro ' + respuesta.data.nombre)
+                    this.GetProductos()
+                })
+                .catch(error => { console.log(error.message) })
+
         },
-        
-        methods: {
-            async GetProductos(){
-                 await axios.get("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos")
-                 .then(respuesta => { 
-                     this.productos = respuesta.data                                      
+        async PutProducto(id, product) {
+
+            await axios.put("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos/" + id, product)
+                .then(respuesta => {
+                    console.log('Se modifico este registro ' + respuesta.data.nombre)
+                    this.GetProductos()
                 })
-                 .catch(error =>{console.log(error.message)})
-                 .finally(() => {console.log('Finalizo la peticion')})
-            },
-            async PostProducto(product) {
-              await axios.post("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos", product)
-                .then(respuesta => { 
-                    console.log('Se agregó este registro '+ respuesta.data.nombre)
-                    this.GetProductos() 
+                .catch(error => { console.log(error.message) })
+        },
+        async DelProducto(id) {
+            await axios.delete("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos/" + id)
+                .then(respuesta => {
+                    console.log("Se eliminó " + respuesta.data.nombre)
+                    this.GetProductos()
                 })
-                .catch(error =>{console.log(error.message)})
-                             
-            },
-            async PutProducto (id,product){
-            
-               await axios.put("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos/"+id,product)
-               .then(respuesta => { 
-                    console.log('Se modifico este registro '+ respuesta.data.nombre)
-                    this.GetProductos() 
-                })
-                .catch(error =>{console.log(error.message)})
-            },
-            async DelProducto (id){
-                 await axios.delete("https://628cc93ea3fd714fd0395fc2.mockapi.io/api/v1/productos/"+id)
-                  .then(respuesta =>{
-                      console.log("Se eliminó " + respuesta.data.nombre)
-                      this.GetProductos() 
-                  })
-                  .catch(error =>{console.log(error.message)})
-            },
-            
-        }        
+                .catch(error => { console.log(error.message) })
+        },
+
     }
+}
 </script>
 
 <style lang="scss" scoped>
-
 </style>

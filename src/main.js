@@ -7,14 +7,18 @@ import Vuelidate from 'vuelidate'
 import store from './store/index.js'
 
 
+
 Vue.config.productionTip = false
 Vue.use(Vuelidate)
 Vue.use(VueSweetalert2);
 
 
+
+
+
 new Vue({
   store,
-  router,
+  router,  
   render: h => h(App),
 }).$mount('#app')
 

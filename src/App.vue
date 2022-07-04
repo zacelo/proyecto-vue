@@ -1,126 +1,58 @@
 <template>
   <div id="app">
-    <div class="container mt-4 mb-5 text-center fixed">
-     
-      <div class="row">
-        <div class="col-12">
-          <nav>
-            <div class="d-flex justify-content-between">
-              <div >
-                  <agregar-carrito />
-                </div>
-              <div>
-                <router-link :to="{ name: 'inicio' }" class="btn btn-warning text-white fw-bolder fs-5">Inicio
-                </router-link>
-                |
-                <router-link to="/galeria" class="btn btn-warning text-white fw-bolder fs-5">Galería</router-link>
-                |
-                <router-link to="/nosotros" class="btn btn-warning text-white fw-bolder fs-5">Nosotros</router-link>
-              
-                |
-
-                <router-link v-if="datos.boton" :to="{ name: datos.ruta }"
-                  class="btn btn-warning text-white fw-bolder fs-5">{{ datos.nombreBoton }}</router-link>
-              </div>
-              <div>
-                <span class="align-bottom me-3 fs-5">{{ datos.nombreUsuario + "/" }}
-                  <router-link :to="{ name: datos.rutaLogin }" class="fs-5" v-if="!datos.boton">{{ datos.loginLink }}
-                  </router-link>
-                  <a class="fs-5" v-if="datos.boton" @click="cerrarSesion">{{
-                      datos.loginLink
-                  }}</a>
-                </span>
-                <img :src="require(`${datos.imagenUsuario}`)" alt="" id="user" />
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>
-
-    <router-view @usuario="validarUsuario" />
+    <barra-navegacion/>
+    <inicio-sesion/>  
+    <router-view />
+    <modal-carrito/>
+    <modal-ingreso-usuario/>
+    <modal-registro-usuario/>  
+    <pie-pagina/>  
   </div>
 </template>
 
 <script>
-import AgregarCarrito from "@/components/AgregarCarrito.vue";
-
+import { mapState,mapActions } from "vuex";
+import BarraNavegacion from "@/components/BarraNavegacion.vue"
+import  inicioSesion from "@/components/inicioSesion.vue"
+import modalIngresoUsuario from "@/components/modals/modalIngresoUsuario.vue"
+import modalRegistroUsuario from "@/components/modals/modalRegistroUsuario.vue"
+import modalCarrito from '@/components/modals/modalCarrito.vue'
+import PiePagina from "@/components/piePagina.vue";
 
 export default {
   name: "App",
-
-  created() {
-        this.validarLocal();   
-  },
   data() {
     return {
-      datos: ''
-    };
+    }
+  },
+  mounted() {
+    this.cargarUsuarioLocalStorage()
+    this.cargarCarritoLocalStorage()
   },
   components: {
-    AgregarCarrito,
-   
+    BarraNavegacion,
+    modalIngresoUsuario,
+    modalRegistroUsuario,
+    modalCarrito,
+    inicioSesion,
+    PiePagina
+  },
+  computed: {
+    ...mapState('usuarios',['usuario'])
   },
   methods: {
-    
-    validarLocal() {
-      if (!localStorage.getItem("usuario")) {
-        let datos = {
-          loginLink: "Entrar",
-          rutaLogin: "login",
-          ruta: "",
-          nombreBoton: "",
-          nombreUsuario: "usuario",
-          imagenUsuario: "./assets/user1.png",
-          boton: false,
-        };
-        localStorage.setItem("datos", JSON.stringify(datos))
-        this.datos=JSON.parse(localStorage.getItem("datos"))
-      }else{
-        this.datos=JSON.parse(localStorage.getItem("datos"))
-      }
+    cargarUsuarioLocalStorage(){
+    this.$store.dispatch('usuarios/cargarUsuarioLocalStorage')
     },
-    validarUsuario(usuario) {
-      if (usuario.rol == "admin") {
-        let datos = {
-          loginLink: "Cerrar Sesion",
-          rutaLogin: "inicio",
-          ruta: "panel",
-          nombreBoton: "Panel Administrador",
-          nombreUsuario: "Bienvenido " + usuario.usuario,
-          imagenUsuario: "./assets/user2.png",
-          boton: true,
-        };
-        localStorage.setItem("datos", JSON.stringify(datos));
-        this.datos = JSON.parse(localStorage.getItem("datos"));
-      } else {
-        let datos = {
-          loginLink: "Cerrar Sesion",
-          rutaLogin: "inicio",
-          ruta: "micuenta",
-          nombreBoton: "Mi Cuenta",
-          nombreUsuario: "Bienvenido " + usuario.usuario,
-          imagenUsuario: "./assets/user2.png",
-          boton: true,
-        };
-        localStorage.setItem("datos", JSON.stringify(datos));
-        this.datos = JSON.parse(localStorage.getItem("datos"));
-      }
+    cargarCarritoLocalStorage(){
+    this.$store.dispatch('carrito/cargarCarritoLocalStorage')
     },
-
-    cerrarSesion() {
-      localStorage.removeItem("usuario");
-      localStorage.removeItem("rol");
-      this.validarLocal();
-      this.datos = JSON.parse(localStorage.getItem("datos"));
-      this.$router.push({ name: "login" });
-    },
-  },
+    ...mapActions('usuarios',['cargarUsuarioLocalStorage']),
+    ...mapActions('carrito' ,['cargarCarritoLocalStorage'])
+  }
 };
 </script>
 
-<style>
-#user {
-  width: 35px;
-}
+<style >
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap');
 </style>
