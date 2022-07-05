@@ -5,7 +5,7 @@
             <div class="">
                 <div class="text-center">
                     <h5 class="section-title  text-center ">─ Testimonios ─</h5>
-                    <h1 class="mb-5">Que opinan nuestros clientes!!!</h1>
+                    <h1 class="mb-5">Que opinan nuestros clientes !</h1>
                 </div>
                 <div class="row ">
                     <div class="col-sm-6 ">

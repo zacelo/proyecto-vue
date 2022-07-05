@@ -5,6 +5,8 @@
                 <div class="col-12">
                     <banner-inicio />                   
                     <lista-productos />
+                    <nuestro-equipo class="bg-dark text-white mb-5"/>
+                    <descripcion-nosotros/>
                     <testimonios-web class="bg-dark text-white px-2"/>
                     <componente-contacto/>                   
                     
@@ -19,6 +21,9 @@ import ListaProductos from '@/components/ListaProductos.vue';
 import BannerInicio from "@/components/BannerInicio.vue";
 import TestimoniosWeb from '@/components/TestimoniosWeb.vue'
 import ComponenteContacto from '@/components/CompContacto.vue'
+import DescripcionNosotros from '@/components/DescNosotros.vue'
+import NuestroEquipo from '@/components/NuestroEquipo.vue'
+
 import { mapState } from 'vuex'
 export default {
     name: "PaginaInicio",
@@ -27,7 +32,9 @@ export default {
         ListaProductos,
         BannerInicio,
         TestimoniosWeb,
-        ComponenteContacto
+        ComponenteContacto,
+        DescripcionNosotros,         
+        NuestroEquipo
 
         },
     

@@ -3,6 +3,7 @@
     <div class="container">
         <banner-nosotros/>       
       <descripcion-nosotros/>
+      <nuestro-equipo class="bg-dark text-white mb-5"/>
       <testimonios-web/>
     </div>
   </div>
@@ -12,6 +13,7 @@
 import { mapState } from 'vuex'
 import BannerNosotros from "@/components/BannerNosotros.vue"
 import DescripcionNosotros from '@/components/DescNosotros.vue'
+import NuestroEquipo from '@/components/NuestroEquipo.vue'
 import TestimoniosWeb from '@/components/TestimoniosWeb.vue'
     export default {
   mounted() {
@@ -32,7 +34,8 @@ import TestimoniosWeb from '@/components/TestimoniosWeb.vue'
         components: {
           BannerNosotros,
           DescripcionNosotros,
-          TestimoniosWeb
+          TestimoniosWeb,
+          NuestroEquipo
         }
     }
 </script>

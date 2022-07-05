@@ -14,7 +14,7 @@
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13157.38502025993!2d-57.839294707759194!3d-34.46873941318476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a312689e9baadf%3A0xd805b8023fcf8708!2sCol%20Del%20Sacramento%2C%20Departamento%20de%20Colonia!5e0!3m2!1ses-419!2suy!4v1657036407785!5m2!1ses-419!2suy"
                             frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
                             tabindex="0"></iframe>
-                            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13157.38502025993!2d-57.839294707759194!3d-34.46873941318476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a312689e9baadf%3A0xd805b8023fcf8708!2sCol%20Del%20Sacramento%2C%20Departamento%20de%20Colonia!5e0!3m2!1ses-419!2suy!4v1657036407785!5m2!1ses-419!2suy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                           
                     </div>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">

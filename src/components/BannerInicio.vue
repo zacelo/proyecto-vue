@@ -5,14 +5,11 @@
       <div class="container my-5 py-5">
         <div class="row align-items-center g-5">
           <div class="col-lg-6 text-center text-lg-start">
-            <h1 class="display-3 text-white animate__animated  animate__backInDown ">Disfruta de nuestra
-              <br>Deliciosa comida
+            <h1 class="display-3 text-white animate__animated  animate__backInDown mb-5">Disfruta de nuestra
+              Deliciosa comida
             </h1>
-            <p class="text-white  mb-4 pb-5 my-5 animate__animated animate__bounceInLeft ">No hablamos de la gente, hablamos
-              de pizza.<br/>
-              Nuestro mejor secreto en pizzas: Ingredientes de felicidad y toques de alegría.<br/>
-              La pizza conecta emociones, conecta personas.<br/>
-              Trozos perfectos, precios perfectos, pizzas perfectas.</p>  
+            <p class="text-white  mb-5 animate__animated  animate__backInDown">Nuestro mejor secreto en pizzas: Ingredientes de felicidad y toques de alegría.</p>
+          
               
             <router-link :to="{ name: 'menu' }" class="btn py-sm-3 px-sm-5 me-3 animate__animated animate__bounceInLeft"
               onclick="window.scrollTo(0,0)">NUESTRO MENÚ</router-link>
@@ -51,6 +48,7 @@ export default {
 P {
   font-family: 'Heebo', sans-serif;
   font-weight: 400;
+  font-size: 20px;
 }
 
 h1 {
