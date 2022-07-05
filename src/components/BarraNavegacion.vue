@@ -33,8 +33,8 @@
               data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Menú</span>
           </router-link>
 
-          <router-link :to="{ name: 'galeria' }" class=" nav-link text-center" onclick="window.scrollTo(0,0)"><span
-              data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Galeria</span>
+          <router-link :to="{ name: 'contacto' }" class=" nav-link text-center" onclick="window.scrollTo(0,0)"><span
+              data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Contacto</span>
           </router-link>
 
 

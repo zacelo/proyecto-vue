@@ -1,10 +1,13 @@
 <template>
   <div class="container text-center">
-    <h1>En construcción</h1>
+    <banner-contacto/>
+    <comp-nosotros/>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
+import BannerContacto from '@/components/BannerContacto.vue'
+import CompNosotros from '@/components/CompContacto.vue'
 export default {  
 
     
@@ -17,6 +20,10 @@ export default {
     computed: {
         ...mapState('usuarios', ['usuario'])
     },
+    components: {
+         BannerContacto,
+         CompNosotros
+    }
 
 }
 </script>

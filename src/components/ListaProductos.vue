@@ -1,13 +1,13 @@
 <template>
   <div>
 
-    <div class=" mb-5 mt-5">
+    <div class=" mb-5 mt-5 ">
 
       <div class="text-center " >
-        <h2 class="section-title  text-center  mb-5 ">─── Nuestro Menú ───</h2>
+        <h2 class="section-title  text-center  mb-5 wow animate__animated   animate__backInUp" >── Nuestro Menú ──</h2>
         <!-- <h1 class="mb-5">Elige una Categoría</h1> -->
       </div>
-      <div class="tab-class text-center " >
+      <div class="tab-class text-center wow animate__animated animate__zoomIn" >
         <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
 
 

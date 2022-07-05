@@ -17,9 +17,9 @@ const routes = [
     },
     
     {
-      path: '/galeria',
-      name: 'galeria',     
-      component: () => import('../views/GaleriaImagenes.vue')
+      path: '/contacto',
+      name: 'contacto',     
+      component: () => import('../views/PaginaContacto.vue')
     },
    
     {

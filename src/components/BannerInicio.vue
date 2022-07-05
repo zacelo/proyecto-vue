@@ -8,12 +8,11 @@
             <h1 class="display-3 text-white animate__animated  animate__backInDown ">Disfruta de nuestra
               <br>Deliciosa comida
             </h1>
-            <p class="text-white  mb-4 pb-2 my-5 animate__animated animate__bounceInLeft ">No hablamos de la gente, hablamos
+            <p class="text-white  mb-4 pb-5 my-5 animate__animated animate__bounceInLeft ">No hablamos de la gente, hablamos
               de pizza.<br/>
               Nuestro mejor secreto en pizzas: Ingredientes de felicidad y toques de alegría.<br/>
               La pizza conecta emociones, conecta personas.<br/>
-
-              Trozos perfectos, precios perfectos, pizzas perfectas.</p>
+              Trozos perfectos, precios perfectos, pizzas perfectas.</p>  
               
             <router-link :to="{ name: 'menu' }" class="btn py-sm-3 px-sm-5 me-3 animate__animated animate__bounceInLeft"
               onclick="window.scrollTo(0,0)">NUESTRO MENÚ</router-link>
