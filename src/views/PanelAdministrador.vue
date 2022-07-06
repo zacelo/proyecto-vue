@@ -1,7 +1,7 @@
 
 <template>
     <div class="container mt-4">
-        <h1 class="mb-4">Panel de administrador</h1>
+        <h1 class="mb-4 text-center">Panel de administrador</h1>
        
         <TablaProducto :propsTituloTabla='tituloTabla' :propsProductos="productos" @ProductoParaAgregar="PostProducto"
             @ProductoParaEliminar="DelProducto" @ProductoParaModificar="PutProducto" />
@@ -21,7 +21,7 @@ export default {
     name: 'PanelAdministrador',
     data() {
         return {
-            tituloTabla: ['Imagen', 'Nombre', 'Precio', 'Descripción', 'Categoría', '', ''],
+            tituloTabla: ['Imagen', 'Nombre', 'Precio', 'Descripción', 'Categoría'],
             productos: [],
 
         }

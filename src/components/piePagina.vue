@@ -5,7 +5,7 @@
         <footer class="footer_section ">
            
                 <div class="row">
-                    <div class="col-md-4 footer-col">
+                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp "  data-wow-delay=".4s">
                         <div class="footer_contact">
                             <h4>
                                 Contacto
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp">
+                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp "  data-wow-delay=".2s">
                         <div class="footer_detail">
 
                             <a href="" class="footer-logo">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 footer-col">
+                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp "  data-wow-delay=".6s">
                         <h4>
                             Abierto
                         </h4>

@@ -7,7 +7,7 @@
                     <lista-productos />
                     <nuestro-equipo class="bg-dark text-white mb-5"/>
                     <descripcion-nosotros/>
-                    <testimonios-web class="bg-dark text-white px-2"/>
+                    <testimonios-web class="bg-dark text-white px-2 "/>
                     <componente-contacto/>                   
                     
                 </div>

@@ -8,8 +8,7 @@
             <h1 class="display-3 text-white animate__animated  animate__backInDown mb-5">Disfruta de nuestra
               Deliciosa comida
             </h1>
-            <p class="text-white  mb-5 animate__animated  animate__backInDown">Nuestro mejor secreto en pizzas: Ingredientes de felicidad y toques de alegría.</p>
-          
+            <p class="text-white  mb-5 animate__animated  animate__backInDown">Nuestro mejor secreto en pizzas: Ingredientes de felicidad y toques de alegría.</p>         
               
             <router-link :to="{ name: 'menu' }" class="btn py-sm-3 px-sm-5 me-3 animate__animated animate__bounceInLeft"
               onclick="window.scrollTo(0,0)">NUESTRO MENÚ</router-link>
@@ -42,7 +41,7 @@ export default {
 }
 
 #banner {
-  margin-top: -150px;
+  margin-top: -60px;
 }
 
 P {

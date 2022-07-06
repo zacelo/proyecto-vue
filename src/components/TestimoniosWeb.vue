@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Testimonial Start -->
-        <div class=" pb-5 pt-3  wow animate__animated   animate__fadeInUp " data-wow-delay="0.1s" >
+        <div class=" pb-5 pt-3  wow animate__animated   animate__fadeInUp " data-wow-delay=".1s" >
             <div class="">
                 <div class="text-center">
                     <h5 class="section-title  text-center ">─ Testimonios ─</h5>

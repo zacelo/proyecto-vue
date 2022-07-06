@@ -3,26 +3,27 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="d-flex justify-content-between">
-          <h2 >Productos</h2>
-          <button type="button" class="btn btn-success mb-2 fs-5 py-0" data-bs-toggle="modal"
-            data-bs-target="#Modalagregar" @click="cambioDeModalAgregar()">
-            <i class="bi bi-file-plus-fill fs-5"></i>
-            Agregar Producto
-          </button>
+        <h2 class="mb-4">Productos</h2>
+        <div class="col-4 my-2 border p-3">
+          <label for="buscar" class="h5 ">Buscar por nombre:</label>
+          <input type="text" v-model="buscar" class="form-control  w-100 mt-2" placeholder="Buscar producto....." id="buscar" />
         </div>
-
-
         <table class="table">
           <thead>
             <tr class="text-center">
               <th v-for="(item, index) in propsTituloTabla" :key="index" class="bg-warning">
                 {{ item }}
               </th>
+              <th class="bg-success " colspan="2"><button type="button" class="btn fs-5 py-0 text-white border"
+                  data-bs-toggle="modal" data-bs-target="#Modalagregar" @click="cambioDeModalAgregar()"> <i
+                    class="bi bi-file-plus-fill fs-5 text-white"></i>
+                  Agregar
+                </button></th>
+
             </tr>
           </thead>
           <tbody>
-            <tr class="align-middle text-center border" v-for="(product, index) in propsProductos" :key="index">
+            <tr class="align-middle text-center border" v-for="(product, index) in items" :key="index">
               <td class="border">
                 <img :src="product.imagen" alt="" class="img img-thumbnail" />
               </td>
@@ -113,7 +114,7 @@
 
               <div class="mb-2">
                 <label for="imagenProducto" class="form-label pt-2">URL Imagen</label>
-                <p class="text-success d-inline" v-if="$v.producto.imagen.minLength && $v.producto.imagen.required ">
+                <p class="text-success d-inline" v-if="$v.producto.imagen.minLength && $v.producto.imagen.required">
                   <i class="bi bi-check-circle-fill fs-5 ms-2"></i>
                 </p>
                 <input type="text" class="form-control" id="imagenProducto" placeholder="Ingrese url imagen ...."
@@ -127,7 +128,9 @@
               </div>
 
               <div class="text-end mt-4">
-                <button type="submit" class="btn acceder" v-if="$v.producto.imagen.minLength && $v.producto.imagen.required && $v.producto.descripcion.minLength && $v.producto.descripcion.required && $v.producto.precio.required && $v.producto.nombre.required && $v.producto.nombre.minLength" data-bs-dismiss="modal">
+                <button type="submit" class="btn acceder"
+                  v-if="$v.producto.imagen.minLength && $v.producto.imagen.required && $v.producto.descripcion.minLength && $v.producto.descripcion.required && $v.producto.precio.required && $v.producto.nombre.required && $v.producto.nombre.minLength"
+                  data-bs-dismiss="modal">
                   {{ btnModal }}
                 </button>
                 <button type="button" class="btn btn-danger ms-2" data-bs-dismiss="modal" @click="resetearForm()">
@@ -156,15 +159,23 @@ export default {
         descripcion: "",
         categoria: "Pizza",
         imagen: "",
-        cantidad: 1,      
+        cantidad: 1,
       },
+      buscar: '',
       idModificar: "",
       enviado: false,
       tituloModal: "",
       btnModal: "",
     };
   },
+  computed: {
+    items() {
+      return this.propsProductos.filter(item => {
+        return item.nombre.toLowerCase().includes(this.buscar.toLowerCase());
+      });
+    },
 
+  },
   props: {
     propsTituloTabla: {
       type: Array,
@@ -182,7 +193,7 @@ export default {
       this.tituloModal = "Modificar Producto";
       this.btnModal = "Modificar";
     },
-    EmitirProductoEliminar(id, nombre) {    
+    EmitirProductoEliminar(id, nombre) {
       this.$swal.fire({
         title: `Esta seguro que desea eliminar `,
         text: nombre,
@@ -296,8 +307,9 @@ export default {
 td {
   font-size: 20px;
 }
+
 .acceder {
-    font-family: 'Nunito', sans-serif;
-    background-color: #FEA116;
+  font-family: 'Nunito', sans-serif;
+  background-color: #FEA116;
 }
 </style>
