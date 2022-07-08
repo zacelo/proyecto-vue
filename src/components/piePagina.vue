@@ -5,8 +5,8 @@
         <footer class="footer_section ">
            
                 <div class="row">
-                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp "  data-wow-delay=".4s">
-                        <div class="footer_contact">
+                    <div class="col-md-4 footer-col">
+                        <div class="footer_contact wow animate__animated   animate__backInUp"  data-wow-delay=".4s">
                             <h4>
                                 Contacto
                             </h4>
@@ -32,8 +32,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp "  data-wow-delay=".2s">
-                        <div class="footer_detail">
+                    <div class="col-md-4 footer-col ">
+                        <div class="footer_detail wow animate__animated   animate__backInUp "  data-wow-delay=".2s" >
 
                             <a href="" class="footer-logo">
                                 Pizza Ya
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 footer-col wow animate__animated   animate__backInUp "  data-wow-delay=".6s">
+                    <div class="col-md-4 footer-col">
                         <h4>
                             Abierto
                         </h4>
@@ -66,7 +66,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="footer-info ">
+                <div class="footer-info  wow animate__animated   animate__backInUp "  data-wow-delay=".6s">
                     <p>
                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. <br/>
                       

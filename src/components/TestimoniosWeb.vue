@@ -38,7 +38,7 @@
                                 <img class="img-fluid flex-shrink-0 rounded-circle"
                                     src="@/assets/testimonios/testimonial-4.jpg">
                                 <div class="ps-3">
-                                    <h5 class="mb-1">Valeria Rios</h5>
+                                    <h5 class="mb-1">Samari</h5>
                                     <small>Administrativa</small>
                                 </div>
 
