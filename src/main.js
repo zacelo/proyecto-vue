@@ -5,11 +5,13 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import router from './router'
 import Vuelidate from 'vuelidate'
 import store from './store/index.js'
+import VuePaginate from 'vue-paginate'
 
 
 
 Vue.config.productionTip = false
-Vue.use(Vuelidate)
+Vue.use(Vuelidate);
+Vue.use(VuePaginate)
 Vue.use(VueSweetalert2);
 
 

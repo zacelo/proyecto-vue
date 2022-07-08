@@ -2,7 +2,7 @@
     <div>
         <div class=" mb-5">
             <div class="">
-                <div class="text-center wow fadeInUp mb-5">
+                <div class="text-center mb-5">
                     <h5 class="section-title  text-center wow animate__animated   animate__backInUp">── Nuestro Local ──
                     </h5>
 
@@ -48,7 +48,7 @@
 
                         <router-link :to="{ name: 'menu' }"
                             class="btn py-sm-2 mt-4  wow animate__animated animate__bounceInRight"
-                            onclick="window.scrollTo(0,0)">NUESTRO MENÚ</router-link>
+                            onclick="window.scrollTo(0,0)"  data-wow-delay="0.7s">NUESTRO MENÚ</router-link>
                     </div>
                 </div>
             </div>

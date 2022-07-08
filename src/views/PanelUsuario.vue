@@ -5,7 +5,7 @@
       <div class="row mb-5 mt-4">
         <h1 class=" mt-3 text-center">─ Mis Compras ─</h1>
         <div v-for="(item, index) of usuarioCompras" :key="index" class=" d-flex align-middle justify-content-center">
-          <div class="col-12 col-sm-8 border border-3 mt-4 ">
+          <div class="col-12 col-sm-11 border border-3 mt-4 ">
             <div class="text-end  bg-dark py-1 pe-4 color">
               <div class="d-flex justify-content-around ">
                 <h4>Fecha: {{ item.fecha }}</h4>

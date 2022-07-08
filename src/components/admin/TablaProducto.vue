@@ -1,50 +1,67 @@
 <template>
-  <div>
+  <div class="mb-5">
+    <div class="row altura mt-4">
+      <div class="col-12 fondo bordes  ">
+        <h2 class=" text-center bg-dark py-2">Productos</h2>
+      
+        <div class="d-flex justify-content-between ">
+          <div class="col-4 mb-2  bordes p-3 ">
+            <label for="buscar" class="h5 ">Buscar por nombre:</label>
+            <input type="text" v-model="buscar" class="form-control  w-100 mt-2" placeholder="Buscar producto....."
+              id="buscar">              
+          </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h2 class="mb-4">Productos</h2>
-        <div class="col-4 my-2 border p-3">
-          <label for="buscar" class="h5 ">Buscar por nombre:</label>
-          <input type="text" v-model="buscar" class="form-control  w-100 mt-2" placeholder="Buscar producto....." id="buscar" />
+          <div>
+            <br />
+            <paginate-links class="mt-5"
+              :classes="{ ul: ['pagination', 'justify-content-center'], li: ['page-item'], a: ['page-link', 'btn'] }"
+              for="productos" :show-step-links="true" :limit="8">
+            </paginate-links>
+          </div>
         </div>
-        <table class="table">
-          <thead>
-            <tr class="text-center">
-              <th v-for="(item, index) in propsTituloTabla" :key="index" class="bg-warning">
-                {{ item }}
-              </th>
-              <th class="bg-success " colspan="2"><button type="button" class="btn fs-5 py-0 text-white border"
-                  data-bs-toggle="modal" data-bs-target="#Modalagregar" @click="cambioDeModalAgregar()"> <i
-                    class="bi bi-file-plus-fill fs-5 text-white"></i>
-                  Agregar
-                </button></th>
 
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="align-middle text-center border" v-for="(product, index) in items" :key="index">
-              <td class="border">
-                <img :src="product.imagen" alt="" class="img img-thumbnail" />
-              </td>
-              <td class="border">{{ product.nombre }}</td>
-              <td class="border">$ {{ product.precio }}</td>
-              <td class="td text-center px-5">{{ product.descripcion }}</td>
-              <td class="border">{{ product.categoria }}</td>
 
-              <td>
-                <div @click="cambioDeModalModificar">
-                  <i class="bi bi-pencil-square text-primary fs-3 btn p-0" title="editar" data-bs-toggle="modal"
-                    data-bs-target="#Modalagregar" @click="IconoModificarProducto(product)"></i>
-                </div>
-              </td>
-              <td>
-                <i class="bi bi-trash text-danger fs-3 btn p-0" title="eliminar"
-                  @click="EmitirProductoEliminar(product.id, product.nombre)"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th v-for="(item, index) in propsTituloTabla" :key="index" class="bg-warning">
+                  {{ item }}
+                </th>
+                <th class="bg-success " colspan="2"><button type="button" class="btn fs-5 py-0 text-white border"
+                    data-bs-toggle="modal" data-bs-target="#Modalagregar" @click="cambioDeModalAgregar()"> <i
+                      class="bi bi-file-plus-fill fs-5 text-white"></i>
+                    Agregar
+                  </button></th>
+
+              </tr>
+            </thead>
+
+            <paginate ref="paginator" name="productos" :list="items" :per="4" tag="tbody">
+              <tr class="align-middle text-center bordes " v-for="(product, index) in paginated('productos')"
+                :key="index">
+                <td class=" bordes ">
+                  <img :src="product.imagen" alt="" class="img img-thumbnail" />
+                </td>
+                <td class="bordes">{{ product.nombre }}</td>
+                <td class="bordes">$ {{ product.precio }}</td>
+                <td class="td text-center px-5 py-4">{{ product.descripcion }}</td>
+                <td class="bordes">{{ product.categoria }}</td>
+                <td>
+                  <div @click="cambioDeModalModificar">
+                    <i class="bi bi-pencil-square text-primary fs-3 btn p-0" title="editar" data-bs-toggle="modal"
+                      data-bs-target="#Modalagregar" @click="IconoModificarProducto(product)"></i>
+                  </div>
+                </td>
+                <td>
+                  <i class="bi bi-trash text-danger fs-3 btn p-0" title="eliminar"
+                    @click="EmitirProductoEliminar(product.id, product.nombre)"></i>
+                </td>
+              </tr>
+            </paginate>
+          </table>
+        </div>
+
       </div>
     </div>
 
@@ -166,6 +183,7 @@ export default {
       enviado: false,
       tituloModal: "",
       btnModal: "",
+      paginate: ['productos']
     };
   },
   computed: {
@@ -270,6 +288,9 @@ export default {
         });
       }
     },
+    resetInput(){
+      this.buscar=''
+    }
 
   },
   validations: {
@@ -296,6 +317,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.altura{
+  min-height: 850px;
+}
+h2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+    font-size: 37px;
+    text-decoration: underline;
+    color: #FEA116;
+}
 .img {
   width: 85px;
 }
@@ -307,7 +339,12 @@ export default {
 td {
   font-size: 20px;
 }
-
+.fondo{
+  background-color: #f8e6d1;
+}
+.bordes{
+  border: 1px solid rgb(189, 180, 180)
+}
 .acceder {
   font-family: 'Nunito', sans-serif;
   background-color: #FEA116;

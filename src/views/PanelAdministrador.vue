@@ -1,13 +1,12 @@
 
 <template>
-    <div class="container mt-4">
-        <h1 class="mb-4 text-center">Panel de administrador</h1>
-       
+    <div class="container mt-4">         
+        <h1 class="mb-4 text-center">─ Panel de administrador ─</h1>  
+        <button class="btn btn-warning fw-bolder fs-5 "  @click="estado = !estado">Productos</button> 
+        <button class="btn btn-warning fw-bolder fs-5 ms-2" @click="estado = !estado">Ventas</button>    
         <TablaProducto :propsTituloTabla='tituloTabla' :propsProductos="productos" @ProductoParaAgregar="PostProducto"
-            @ProductoParaEliminar="DelProducto" @ProductoParaModificar="PutProducto" />
-        
-
-        <tabla-ventas/>
+            @ProductoParaEliminar="DelProducto" @ProductoParaModificar="PutProducto" v-if ="estado"/>
+        <tabla-ventas v-if ="estado == false"/>
     </div>
 </template>
 
@@ -23,6 +22,8 @@ export default {
         return {
             tituloTabla: ['Imagen', 'Nombre', 'Precio', 'Descripción', 'Categoría'],
             productos: [],
+            estado:true
+           
 
         }
     },
@@ -42,8 +43,8 @@ export default {
     methods: {
         validarEntradaUsuario() {
             if (this.usuario.rol == undefined || this.usuario.rol != 'admin') {
-                this.$router.push({ name: 'inicio' })                
-            } 
+                this.$router.push({ name: 'inicio' })
+            }
 
         },
         async GetProductos() {
@@ -85,5 +86,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
+h1 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+    font-size: 42px;   
+    color: #FEA116;
+}
 </style>

@@ -11,10 +11,54 @@
                     <div class="col-sm-6 ">
                         <div class="  borde rounded p-4 my-2 tarjeta">
                             <i class="fa fa-quote-left fa-2x  mb-3 icon"></i>
+                            <p>Excelente la pizzas, tienen burda de queso, fuimos con los panas, en ese sitio se la pasa uno chévere, tipo tranquilo, tomando unas birras.</p>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid flex-shrink-0 rounded-circle"
+                                    src="@/assets/testimonios/testimonial-3.jpg" >
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Royman Smith</h5>
+                                    <small>Personal Trainer</small>
+                                </div>
+
+                            </div>
+                            <div class="mt-3 ms-3 estrellas">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-sm-6 ">
+                        <div class="  borde rounded p-4 my-2 tarjeta">
+                            <i class="fa fa-quote-left fa-2x  mb-3 icon"></i>
+                            <p>La comida muy buena , pero se demoro un poquito, pero valió la pena la espera</p>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid flex-shrink-0 rounded-circle"
+                                    src="@/assets/testimonios/testimonial-4.jpg">
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Valeria Rios</h5>
+                                    <small>Administrativa</small>
+                                </div>
+
+                            </div>
+                            <div class="mt-3 ms-3 estrellas">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <div class="  borde rounded p-4 my-2 tarjeta">
+                            <i class="fa fa-quote-left fa-2x  mb-3 icon"></i>
                             <p>Impresionante, me encanto la milanesa napolitana, con papas fritas naturales, muy bueno sigan asi</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0 rounded-circle"
-                                    src="@/assets/testimonios/testimonial-1.jpg" style="width: 50px; height: 50px;">
+                                    src="@/assets/testimonios/testimonial-1.jpg" >
                                 <div class="ps-3">
                                     <h5 class="mb-1">Natalia Díaz</h5>
                                     <small>Abogada</small>
@@ -30,14 +74,15 @@
                                 <i class="fas fa-star"></i>
                             </div>
                         </div>
-                    </div>
+                    </div>                 
+                   
                     <div class="col-sm-6 ">
                         <div class="  borde rounded p-4 my-2 tarjeta">
                             <i class="fa fa-quote-left fa-2x  mb-3 icon"></i>
                             <p>Muy buenas pizzas, por lo menos la que pedi yo, lo unico demoraron un poquito</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0 rounded-circle"
-                                    src="@/assets/testimonios/testimonial-2.jpg" style="width: 50px; height: 50px;">
+                                    src="@/assets/testimonios/testimonial-2.jpg" >
                                 <div class="ps-3">
                                     <h5 class="mb-1">Juan Perez</h5>
                                     <small>Empleado</small>
@@ -48,50 +93,6 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 ">
-                        <div class="  borde rounded p-4 my-2 tarjeta">
-                            <i class="fa fa-quote-left fa-2x  mb-3 icon"></i>
-                            <p>Me gustaron mucho las hamburguesas , en especial la mexicana con esas papas rusticas excelente, vamos a seguir provando</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle"
-                                    src="@/assets/testimonios/testimonial-3.jpg" style="width: 50px; height: 50px;">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Emiliano Fuentes</h5>
-                                    <small>Marinero</small>
-                                </div>
-
-                            </div>
-                            <div class="mt-3 ms-3 estrellas">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 ">
-                        <div class="  borde rounded p-4 my-2 tarjeta">
-                            <i class="fa fa-quote-left fa-2x  mb-3 icon"></i>
-                            <p>La comida muy buena , pero se demoro bastante</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle"
-                                    src="@/assets/testimonios/testimonial-4.jpg" style="width: 50px; height: 50px;">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Valeria Rios</h5>
-                                    <small>Administrativa</small>
-                                </div>
-
-                            </div>
-                            <div class="mt-3 ms-3 estrellas">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-
                             </div>
                         </div>
                     </div>
@@ -134,20 +135,29 @@ h1 {
     margin: 3px;
 }
 .tarjeta{
-    min-height: 255px
+    min-height: 347px
 }
 .borde {
     border: 2px solid #fea116
 }
 
-p,
+p{
+    font-size:20px;
+}
 small {
     font-family: "Nunito", sans-serif;
     font-weight: 400;
+    font-size:20px;
+    color: #af7324;
 }
 
 h5 {
     font-family: "Nunito", sans-serif;
     font-weight: 800;
+    font-size: 25px
+}
+img{
+    width:100px;
+    height:100px;
 }
 </style>

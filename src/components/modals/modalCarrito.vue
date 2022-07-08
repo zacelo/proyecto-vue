@@ -114,6 +114,7 @@ export default {
     PostCompra(compra) {
       let date = new Date();
       let fecha = String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear()        
+      
       let hora = date.toLocaleTimeString() 
       let compraTotal = {
           idUsuario: parseInt(this.usuario.id),
