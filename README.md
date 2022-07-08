@@ -25,4 +25,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## Deploy en netlify 
-### https://zacelovue.netlify.app/#/
+### https://pizzaya.netlify.app/#/
