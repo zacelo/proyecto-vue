@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-5">
+    <div class="mb-5 container">
         <div class="row altura mt-4">
             <div class="col-12 fondo bordes  ">
                 <h2 class="text-center bg-dark py-2">Ventas</h2>
@@ -8,52 +8,61 @@
                     <div class="col-4 mb-2 bordes p-3  ">
                         <label for="buscar" class="h5 ">Buscar por fecha:</label>
                         <input type="date" v-model="buscarFecha" class="form-control  w-75 mt-2 d-inline"
-                            placeholder="Buscar por fecha ....." id="buscar" >
+                            placeholder="Buscar por fecha ....." id="buscar" autocomplete="off">
                         <div class="d-inline">
                             <button class="btn btn-warning ms-2 fw-bolder align-middle pb-1 mb-1 bordes"
-                                @click="limpiar">Limpiar</button>
+                                @click="reset">Reset</button>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <br />
-                            <paginate-links class="mt-5"
-                                :classes="{ ul: ['pagination', 'justify-content-center'], li: ['page-item'], a: ['page-link', 'btn'] }"
-                                for="ventas" :show-step-links="true" :limit="8">
+                    <div class=" d-flex align-items-end ">
+                        <div >
+                                                     
+                            <paginate-links class="mb-1"
+                                :classes="{ ul: ['pagination'], li: ['page-item'], a: ['page-link'] }"
+                                for="ventas" :show-step-links="true" :limit="8" :step-links="{
+                                    next: 'Siguiente',
+                                    prev: 'Anterior'
+                                }">
                             </paginate-links>
+                            <div class="text-end  mb-2 me-1 rounded h6">
+                                <span v-if="$refs.paginator">
+                                    ventas {{ $refs.paginator.pageItemsCount }} total
+                                </span>
+                            </div>
                         </div>
                     </div>
 
 
                 </div>
                 <div>
-                <table class="table">
-                    <thead>
-                        <tr class="bordes">
-                            <th class="bg-warning text-center" v-for="(item, index) of titulos" :key="index">{{ item }}
-                            </th>
+                    <table class="table">
+                        <thead>
+                            <tr class="bordes">
+                                <th class="bg-warning text-center" v-for="(item, index) of titulos" :key="index">{{ item
+                                }}
+                                </th>
 
-                        </tr>
-                    </thead>
-                    <paginate ref="paginator" name="ventas" :list="items" :per="10" tag="tbody">
-                        <tr class="align-middle text-center bordes " v-for="(ven, index) in paginated('ventas')"
-                            :key="index">
-                            <th class="text-center bordes">{{ ven.id }}</th>
-                            <td class="text-center bordes">{{ ven.fecha }}</td>
-                            <td class="text-center bordes">{{ ven.hora }}</td>
-                            <td class="text-center bordes"><button class="btn btn-outline-primary  py-0"
-                                    data-bs-toggle="modal" data-bs-target="#datosUsuario"
-                                    @click="datoUsuario(ven.idUsuario)">{{ ven.idUsuario }}</button></td>
-                            <td class="text-center w-25 bordes">$ {{ ven.total }}</td>
-                        </tr>
-                    </paginate>
-                </table>
+                            </tr>
+                        </thead>
+                        <paginate ref="paginator" name="ventas" :list="items" :per="10" tag="tbody">
+                            <tr class="align-middle text-center bordes " v-for="(ven, index) in paginated('ventas')"
+                                :key="index">
+                                <th class="text-center bordes">{{ ven.id }}</th>
+                                <td class="text-center bordes">{{ ven.fecha }}</td>
+                                <td class="text-center bordes">{{ ven.hora }}</td>
+                                <td class="text-center bordes"><button class="btn btn-outline-primary  py-0"
+                                        data-bs-toggle="modal" data-bs-target="#datosUsuario"
+                                        @click="datoUsuario(ven.idUsuario)">{{ ven.idUsuario }}</button></td>
+                                <td class="text-center w-25 bordes">$ {{ ven.total }}</td>                               
+                            </tr>
+                        </paginate>
+                    </table>
+                    
+                </div>
 
             </div>
 
-            </div>
 
-            
         </div>
 
         <!-- Modal -->
@@ -109,10 +118,15 @@ export default {
         datoUsuario(id) {
             this.usuario = id
         },
-       
-        limpiar() {
+        async reset() {
             this.buscarFecha = ''
-        }
+            let buscarFecha = this.buscarFecha
+            await buscarFecha
+
+            if (this.$refs.paginator) {
+                this.$refs.paginator.goToPage(1)
+            }
+        },
     },
     computed: {
         items() {

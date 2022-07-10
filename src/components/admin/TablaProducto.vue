@@ -1,28 +1,44 @@
 <template>
-  <div class="mb-5">
+  <div class="container mb-5">
     <div class="row altura mt-4">
       <div class="col-12 fondo bordes  ">
         <h2 class=" text-center bg-dark py-2">Productos</h2>
-      
+
         <div class="d-flex justify-content-between ">
           <div class="col-4 mb-2  bordes p-3 ">
             <label for="buscar" class="h5 ">Buscar por nombre:</label>
-            <input type="text" v-model="buscar" class="form-control  w-100 mt-2" placeholder="Buscar producto....."
-              id="buscar">              
+            <input type="text" v-model="buscar" class="form-control  w-75 mt-2 d-inline"
+              placeholder="Buscar producto....." id="buscar" autocomplete="off">
+            <div class="d-inline">
+              <button class="btn btn-warning ms-2 fw-bolder align-middle pb-1 mb-1 bordes" @click="reset">Reset</button>
+            </div>
           </div>
+          <div class=" d-flex align-items-end ">
+                        <div >
+                                                     
+                            <paginate-links class="mb-1"
+                                :classes="{ ul: ['pagination'], li: ['page-item'], a: ['page-link'] }"
+                                for="productos" :show-step-links="true" :limit="8" :step-links="{
+                                    next: 'Siguiente',
+                                    prev: 'Anterior'
+                                }">
+                            </paginate-links>
+                            <div class="text-end  mb-2 me-1 rounded h6">
+                                <span v-if="$refs.paginator">
+                                    productos {{ $refs.paginator.pageItemsCount }} total
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+          
 
-          <div>
-            <br />
-            <paginate-links class="mt-5"
-              :classes="{ ul: ['pagination', 'justify-content-center'], li: ['page-item'], a: ['page-link', 'btn'] }"
-              for="productos" :show-step-links="true" :limit="8">
-            </paginate-links>
-          </div>
         </div>
 
 
         <div>
+
           <table class="table">
+
             <thead>
               <tr class="text-center">
                 <th v-for="(item, index) in propsTituloTabla" :key="index" class="bg-warning">
@@ -203,6 +219,15 @@ export default {
     },
   },
   methods: {
+    async reset() {
+      this.buscar = ''
+      let buscar = this.buscar
+      await buscar
+
+      if (this.$refs.paginator) {
+        this.$refs.paginator.goToPage(1)
+      }
+    },
     cambioDeModalAgregar() {
       this.tituloModal = "Agregar Producto";
       this.btnModal = "Agregar";
@@ -288,8 +313,8 @@ export default {
         });
       }
     },
-    resetInput(){
-      this.buscar=''
+    resetInput() {
+      this.buscar = ''
     }
 
   },
@@ -317,17 +342,18 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
-.altura{
+.altura {
   min-height: 850px;
 }
+
 h2 {
-    font-family: "Nunito", sans-serif;
-    font-weight: 800;
-    font-size: 37px;
-    text-decoration: underline;
-    color: #FEA116;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 37px;
+  text-decoration: underline;
+  color: #FEA116;
 }
+
 .img {
   width: 85px;
 }
@@ -339,12 +365,15 @@ h2 {
 td {
   font-size: 20px;
 }
-.fondo{
+
+.fondo {
   background-color: #f8e6d1;
 }
-.bordes{
+
+.bordes {
   border: 1px solid rgb(189, 180, 180)
 }
+
 .acceder {
   font-family: 'Nunito', sans-serif;
   background-color: #FEA116;

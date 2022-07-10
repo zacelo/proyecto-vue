@@ -52,6 +52,7 @@ export default {
             id: item.id,
             nombre: item.nombre,
             rol: item.rol,
+            img: item.img
           };
           localStorage.setItem("user", JSON.stringify(user));
           context.commit("validarUsuario", JSON.parse(localStorage.getItem("user")));

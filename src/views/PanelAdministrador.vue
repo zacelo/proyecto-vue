@@ -1,12 +1,16 @@
 
 <template>
-    <div class="container mt-4">         
-        <h1 class="mb-4 text-center">─ Panel de administrador ─</h1>  
-        <button class="btn btn-warning fw-bolder fs-5 "  @click="estado = !estado">Productos</button> 
-        <button class="btn btn-warning fw-bolder fs-5 ms-2" @click="estado = !estado">Ventas</button>    
+    <div class="container mt-3">        
+
+
+        <h1 class="mb-2 text-center">─ Panel de administrador ─</h1>
+        <button class="btn btn-warning fw-bolder fs-5 " @click="popo('producto')">Productos</button>
+        <button class="btn btn-warning fw-bolder fs-5 ms-2" @click="popo('venta')">Ventas</button>
+
         <TablaProducto :propsTituloTabla='tituloTabla' :propsProductos="productos" @ProductoParaAgregar="PostProducto"
-            @ProductoParaEliminar="DelProducto" @ProductoParaModificar="PutProducto" v-if ="estado"/>
-        <tabla-ventas v-if ="estado == false"/>
+            @ProductoParaEliminar="DelProducto" @ProductoParaModificar="PutProducto" v-if="seccion == 'productos'" />
+
+        <tabla-ventas v-if="seccion == 'ventas'" />
     </div>
 </template>
 
@@ -22,15 +26,18 @@ export default {
         return {
             tituloTabla: ['Imagen', 'Nombre', 'Precio', 'Descripción', 'Categoría'],
             productos: [],
-            estado:true
-           
-
+            estado: true,
+            seccion: localStorage.getItem("seccion")
         }
     },
 
     mounted() {
         this.GetProductos(),
             this.validarEntradaUsuario()
+
+        if (!this.seccion) {
+            localStorage.setItem('seccion', 'productos')
+        }
 
     },
     components: {
@@ -41,6 +48,16 @@ export default {
         ...mapState('usuarios', ['usuario'])
     },
     methods: {
+        popo(item) {
+            if (item == 'venta') {
+                localStorage.setItem('seccion', 'ventas')
+                this.seccion = localStorage.getItem("seccion")
+            } else {
+                localStorage.setItem('seccion', 'productos')
+                this.seccion = localStorage.getItem("seccion")
+            }
+
+        },
         validarEntradaUsuario() {
             if (this.usuario.rol == undefined || this.usuario.rol != 'admin') {
                 this.$router.push({ name: 'inicio' })
@@ -90,7 +107,7 @@ export default {
 h1 {
     font-family: "Nunito", sans-serif;
     font-weight: 800;
-    font-size: 42px;   
+    font-size: 42px;
     color: #FEA116;
 }
 </style>
