@@ -1,4 +1,6 @@
 # proyecto-final-vue
+![](https://github.com/zacelo/proyecto-vue/raw/master/src/assets/pizza-ya1.jpg)
+![](https://github.com/zacelo/proyecto-vue/raw/master/src/assets/pizza-ya2.jpg)
 
 ## Project setup
 ```
